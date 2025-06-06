@@ -4,6 +4,8 @@ import { NextRequest } from 'next/server'
 
 export async function POST(req) {
   try {
+
+    const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET;
     const evt = await verifyWebhook(req)
 
     // Do something with payload
