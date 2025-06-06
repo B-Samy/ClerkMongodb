@@ -12,7 +12,7 @@ export const connect = async() =>{
 
     try {
         await mongoose.connect(process.env.MONGODB_URI, {
-            dbName: "clerk-mongo",
+            dbName: "clerkmongo",
             usenewUrlParser: true,
             useUnifiedTopology: true,
         });
@@ -21,7 +21,7 @@ export const connect = async() =>{
         initialized = true;
     } catch (error) {
         console.log('Mongodb connection error' , error);
-        
+
     }
 
 
