@@ -4,6 +4,7 @@ import Image from 'next/image';
 import '../../globals.css'
 import Link from 'next/link';
 
+export const revalidate = 30;
 async function getData(slug) {
 const query = `
   *[_type == "blog" && slug.current == '${slug}']{
