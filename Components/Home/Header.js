@@ -19,6 +19,7 @@ const links = [
   { href: '/', label: 'Home' },
   { href: '/payments', label: 'Payments' },
   { href: '/about', label: 'About' },
+  { href: '/feed', label: 'Feed' },
   { href: '/contact', label: 'Contact' },
   { href: 'admin/contacts', label: 'Dashboard' },
 ];
