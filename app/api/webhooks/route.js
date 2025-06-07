@@ -85,7 +85,7 @@ const wh = new Webhook(WEBHOOK_SECRET);
 let evt;
 
 try {
-  evt :wh.verify(body, {
+  evt = wh.verify(body, {
 
     "svix-id": svix_id,
     "svix-timestamp": svix_timestamp,
@@ -104,6 +104,10 @@ console.log("Webhook body:", body)
 
 if (eventType === "user.created" || eventType === "user.updated") {
   console.log(`User with the id of ${id} was created or updated`);
+}
+
+if (eventType === "user.deleted") {
+  console.log(`User with the id of ${id} was deleted`);
 }
 
 return new Response('' , {status: 200})
