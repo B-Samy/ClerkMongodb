@@ -1,28 +1,21 @@
 import mongoose from "mongoose";
 
+mongoose.set("strictQuery", true);
 
-let initialized = false;
-
-export const connect = async() =>{
-    mongoose.set('strictQuery', true)
-    if(initialized){
-        console.log('Mongodb connected')
+export const connect = async () => {
+    if (mongoose.connection.readyState >= 1) {
+        console.log("MongoDB already connected.");
         return;
     }
 
     try {
         await mongoose.connect(process.env.MONGODB_URI, {
             dbName: "clerk-mongo",
-            usenewUrlParser: true,
-            useUnifiedTopology: true,
         });
 
-        console.log('Mongodb connected')
-        initialized = true;
+        console.log("MongoDB connected.");
     } catch (error) {
-        console.log('Mongodb connection error' , error);
-
+        console.error("MongoDB connection error:", error);
+        throw error;    
     }
-
-
-}
+};
