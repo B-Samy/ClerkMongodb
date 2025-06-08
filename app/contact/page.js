@@ -1,9 +1,10 @@
 'use client'
-
+import { toast } from 'react-toastify';
 import '../globals.css'
 import { useState } from "react";
 
 export default function ContactForm() {
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -13,7 +14,9 @@ export default function ContactForm() {
     e.preventDefault();
 
     if (!name || !email || !message) {
-      setStatus("Please fill in all fields.");
+      setStatus(
+        toast.warn("Oops! Some fields are still empty.")
+      );
       return;
     }
 
@@ -32,7 +35,9 @@ export default function ContactForm() {
       setStatus("Failed to send message.");
     } else {
       console.log("Success:", data.message);
-      setStatus("Message sent successfully!");
+      setStatus(
+        toast.success("Got it ! We'll be in touch soon.")
+      );
       setName("");
       setEmail("");
       setMessage("");
@@ -68,5 +73,7 @@ export default function ContactForm() {
       {status && <p>{status}</p>}
     </form>
     </div>
+
+
   );
 }

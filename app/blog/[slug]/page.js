@@ -13,6 +13,7 @@ const query = `
     content,
     titleImage
   }[0]`;
+  
   const data = await client.fetch(query , {slug});
   return data;
 }
